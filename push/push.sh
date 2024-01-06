@@ -4,13 +4,12 @@ echo "########################"
 echo "*** Preparing to push ***"
 echo "########################"
 
-##REGISTRY="linuxfacilito.online:5043"
-IMAGE="nginx"  # Change this to "nginx"
-TAG="latest"  # You can use a specific version or tag
+REGISTRY="linuxfacilito.online:5043"
+IMAGE="app"
 
 echo "*** Logging in ***"
-docker login -u woma702 -p $PASS $REGISTRY
+echo "Location#1" | docker login -u woma702 --password-stdin $REGISTRY
 echo "*** Tagging image ***"
-docker tag $IMAGE:$TAG $REGISTRY/$IMAGE:$TAG
+docker tag $IMAGE:$BUILD_TAG $REGISTRY/$IMAGE:$BUILD_TAG
 echo "*** Pushing image ***"
-docker push $REGISTRY/$IMAGE:$TAG
+docker push $REGISTRY/$IMAGE:$BUILD_TAG
